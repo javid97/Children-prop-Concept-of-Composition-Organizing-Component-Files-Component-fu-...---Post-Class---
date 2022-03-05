@@ -1,26 +1,9 @@
-import React,{useState} from 'react';
-import Town from './Town';
+import React from 'react'
 
-const City = ({id, cityName, towns}) => {
-     const [showTowns, setShowTowns] = useState(false);
-     const renderTowns = _ => {
-          setShowTowns(!showTowns);
-     }
+const City = ({displayTowns, id, cityName}) => {
   return (
-    <div className="city-container">
-      <div id={id} onClick={renderTowns}>
-        {cityName}
-      </div>
-      {showTowns &&
-        towns.map((town, idx) => (
-          <Town
-            key={`town${idx + 1}`}
-            id={`town${idx + 1}`}
-            townName={town.name}
-          />
-        ))}
-    </div>
-  );
+    <div id={`city${id+1}`} onClick={() => displayTowns(id)}>{cityName}</div>
+  )
 }
 
-export default City
+export default City;
